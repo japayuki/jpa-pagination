@@ -3,6 +3,7 @@ package dev.gtmedia.jpapagination.controller;
 import dev.gtmedia.jpapagination.model.Person;
 import dev.gtmedia.jpapagination.model.PersonDTO;
 import dev.gtmedia.jpapagination.repository.PersonRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/people")
+@Slf4j
 public class PersonController {
 
     private final PersonRepository personRepository;
@@ -32,6 +34,8 @@ public class PersonController {
         Pageable p1 = PageRequest.of(page, size);
         Page<Person> pg = personRepository.findAll(p1);
         List<Person> people = personRepository.findAll();
+
+        log.info("test change");
         List<PersonDTO> peopleDTO = people.stream()
                 .map(pd -> new PersonDTO(
                     pd.getFirstName(),
