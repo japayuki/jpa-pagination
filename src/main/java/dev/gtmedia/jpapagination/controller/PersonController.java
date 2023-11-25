@@ -35,7 +35,7 @@ public class PersonController {
         Page<Person> pg = personRepository.findAll(p1);
         List<Person> people = personRepository.findAll();
 
-        log.info("test change");
+        log.info("test change 2");
         List<PersonDTO> peopleDTO = people.stream()
                 .map(pd -> new PersonDTO(
                     pd.getFirstName(),
